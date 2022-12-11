@@ -1,0 +1,13 @@
+#!/bin/bash
+
+export SCRIPTS_DIR=`pwd`
+CATEGORIES=( "utils" )
+for c in ${CATEGORIES[@]}; do 
+    if [ -d "${SCRIPTS_DIR}/${c}" ]; then
+        subfiles=`find ${SCRIPTS_DIR} -type f -mindepth 1 -name "[^.]*.sh"`
+        for sf in ${subfiles}; do 
+            echo ${sf}
+            source "${sf}"
+        done
+    fi
+done 
